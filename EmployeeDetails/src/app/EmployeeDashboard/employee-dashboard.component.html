@@ -1,0 +1,29 @@
+<div *ngIf="loading" class="loading-mask--background"><span class="load-img"></span></div>
+<div *ngIf="loading" class="loading-mask--image"></div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="d-lg-inline-flex d-md-flex full-width">
+            <h1 class="mr-auto title-head">Employees</h1>
+            <button [routerLink]="['/Employees/AddNew']" class="btn btn-sm btn-outline-secondary rounded-pill btn-custom"><i class="ft-plus"></i>Add New</button>
+        </div>
+    </div>
+    <div class="line-gap-50"></div>
+    <div class="col-lg-4 col-md-4 col-sm-12 pr-0">
+        <div class="card mb-3 emp-box">
+            <div class="card-body employee-box" [routerLink]="['/Employees/Edit', employee.EmployeeId]" *ngFor="let employee of allEmployees">
+                <h4>{{employee.FullName}}</h4>
+                <small>{{employee.Position}}</small>
+                <div class="card-btn-block">
+                    <button class="btn btn-light" (click)="deleteEmployee(employee.EmployeeId)"><i class="ft-trash"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-8 col-md-4 col-sm-12 right-block">
+        <div class="card card-body h-100">
+            <div class="card-body emp-det-block">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    </div>
+</div>
